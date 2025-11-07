@@ -1,1 +1,17 @@
 
+DIFF between LIMIT AND OFFSET
+-----------------------------------
+
+// *In MySQL, OFFSET is used in a LIMIT clause to skip a number of rows before returning the results.
+
+Syntax:
+
+SELECT column_name
+FROM table_name
+ORDER BY some_column
+LIMIT row_count OFFSET skip_count;
+
+
+row_count → how many rows you want to return.
+
+OFFSET skip_count → how many rows to skip first.*//
