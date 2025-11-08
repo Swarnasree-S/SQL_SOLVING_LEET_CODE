@@ -13,7 +13,20 @@ ROW_NUMBER() OVER (ORDER BY column_name [ASC|DESC])
 3. DENSE_RANK() OVER (ORDER BY column_name [ASC|DESC])
 
 
+Example 3 — Comparing Different Rank Functions
+SELECT
+    name,
+    salary,
+    RANK() OVER (ORDER BY salary DESC) AS rank_no,
+    DENSE_RANK() OVER (ORDER BY salary DESC) AS dense_rank_no,
+    ROW_NUMBER() OVER (ORDER BY salary DESC) AS row_no
+FROM employee;
 
+name	salary	RANK	DENSE_RANK	ROW_NUMBER
+Sita	70000	1	      1	            1
+Ravi	70000	1	      1          	2
+Mani	60000	3	      2          	3
+Ram	    50000	4	      3	            4
 
 
 
