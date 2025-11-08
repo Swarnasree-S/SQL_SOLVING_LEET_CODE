@@ -10,6 +10,21 @@ END
 
 
 
+
+
+  create functoin syntax
+  --------------------
+  CREATE FUNCTION function_name (parameter_name datatype, ...)
+RETURNS return_datatype
+DETERMINISTIC
+BEGIN
+    -- function logic
+    RETURN value;
+END;
+
+
+
+
 DIFF between LIMIT AND OFFSET
 -----------------------------------
 
