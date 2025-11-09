@@ -1,0 +1,154 @@
+
+MySQL / MariaDB
+1.SELECT DATABASE() AS current_database;
+
+
+Returns the name of the database you are currently connected to.
+------------------------------------------------------------------------------------------
+Ah! You want to count how many tables exist in a database. That depends on your database system. Here’s how to do it for the common ones:
+MySQL / MariaDB
+2.SELECT COUNT(*) AS table_count
+FROM information_schema.tables
+WHERE table_schema = 'your_database_name';
+
+RENEWGRID
+information_schema.tables contains all tables in all databases.
+
+Replace 'your_database_name' with the actual database name.
+----------------------------------------------------------------------------------------------------------
+If you just want a list of all table names in your database RENEWGRID, you can use this query in MySQL:
+
+3.SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'RENEWGRID';
+
+
+This will return a column with all table names in that database.
+------------------------------------------------------------------------------------------------------------------------------
+To see all tables in a database:
+
+4.SHOW TABLES FROM database_name;
+
+-------------------------------------------------------------
+To see the structure of a specific table:
+
+5.DESCRIBE table_name;
+
+
+or
+
+SHOW COLUMNS FROM table_name;
+
+-------------------------------------------------------------------------------
+Perfect! Here’s a single query in MySQL that lists all tables in a database along with their columns, data types, and extra info — basically a full “describe database”:
+
+6.SELECT 
+    TABLE_NAME,
+    COLUMN_NAME,
+    COLUMN_TYPE,
+    IS_NULLABLE,
+    COLUMN_KEY,
+    EXTRA
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = 'RENEWGRID'
+ORDER BY TABLE_NAME, ORDINAL_POSITION;
+
+
+
+---------------------------------------------------------------
+ChatGPT said:
+
+If you want to describe a particular table in MySQL (see its columns, data types, keys, etc.), you can use either of these commands:
+
+1️⃣ Using DESCRIBE
+DESCRIBE table_name;
+
+
+or
+
+DESC table_name;
+
+
+Shows column name, type, nullability, key info, default values, and extra info (like auto_increment).
+
+2️⃣ Using SHOW COLUMNS
+SHOW COLUMNS FROM table_name;
+
+
+Returns almost the same information as DESCRIBE.
+
+3️⃣ Using information_schema (more detailed)
+SELECT 
+    COLUMN_NAME,
+    COLUMN_TYPE,
+    IS_NULLABLE,
+    COLUMN_KEY,
+    COLUMN_DEFAULT,
+    EXTRA
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = 'RENEWGRID'
+  AND TABLE_NAME = 'table_name'
+ORDER BY ORDINAL_POSITION;
+
+
+Gives a more queryable result for use in scripts or reports.
+
+
+------------------------------------8888888888888888888888888---------------------------------------------
+ChatGPT said:
+
+If you want to check how many primary keys and foreign keys exist in a particular table, you can do it in MySQL in a few ways.
+
+1️⃣ Check primary key
+
+Query:
+
+SELECT COUNT(*) AS primary_key_count
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = 'RENEWGRID'
+  AND TABLE_NAME = 'table_name'
+  AND COLUMN_KEY = 'PRI';
+
+
+COLUMN_KEY = 'PRI' indicates a primary key column.
+
+This will return the number of primary key columns in the table.
+
+Note: If the primary key is composite (multiple columns), this count will be > 1.
+
+2️⃣ Check foreign keys
+
+Query:
+
+SELECT COUNT(*) AS foreign_key_count
+FROM information_schema.KEY_COLUMN_USAGE
+WHERE TABLE_SCHEMA = 'RENEWGRID'
+  AND TABLE_NAME = 'table_name'
+  AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+
+REFERENCED_TABLE_NAME IS NOT NULL indicates a foreign key.
+
+Returns the number of foreign key columns in the table.
+
+3️⃣ Quick overview for one table
+
+If you want to see all columns and mark PK/FK:
+
+SELECT 
+    COLUMN_NAME,
+    COLUMN_KEY,
+    REFERENCED_TABLE_NAME AS foreign_table,
+    REFERENCED_COLUMN_NAME AS foreign_column
+FROM information_schema.COLUMNS c
+LEFT JOIN information_schema.KEY_COLUMN_USAGE k
+    ON c.TABLE_SCHEMA = k.TABLE_SCHEMA
+   AND c.TABLE_NAME = k.TABLE_NAME
+   AND c.COLUMN_NAME = k.COLUMN_NAME
+WHERE c.TABLE_SCHEMA = 'RENEWGRID'
+  AND c.TABLE_NAME = 'table_name';
+
+
+COLUMN_KEY = 'PRI' → primary key
+
+foreign_table / foreign_column → foreign key reference
