@@ -1,5 +1,8 @@
 
-
+SELECT
+    score,
+    DENSE_RANK() OVER (ORDER BY score DESC) AS 'rank'
+FROM scores;       type 'rank' dont use rank in alias name
 
 1.💡 Full Syntax Structure
 RANK() OVER (
