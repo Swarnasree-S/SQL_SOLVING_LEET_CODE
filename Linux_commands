@@ -1,0 +1,4 @@
+root@174:/var/www# pwd (present working directory)
+/var/www
+root@174:/var/www# uname -a  (os versoin)
+Linux 174.175.178.68.host.secureserver.net 5.4.0-165-generic #182-Ubuntu SMP Mon Oct 2 19:43:28 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
