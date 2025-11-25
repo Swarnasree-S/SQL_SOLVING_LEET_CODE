@@ -1,19 +1,19 @@
 root@174:/var/www# pwd (present working directory)
 /var/www
-root@174:/var/www# uname -a  (os versoin)
+root@174:/var/www# uname -a  (os versoin)  checking system info (uname -a, whoami)
 Linux 174.175.178.68.host.secureserver.net 5.4.0-165-generic #182-Ubuntu SMP Mon Oct 2 19:43:28 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
 
 /.*    1  ls (list files)
     2  pwd (to list present working directory)
-    3  uname -a ( to show username)
-    4  whoami (list username)
+    3  uname -a ( to show username)  System details checking system info (uname -a, whoami)
+    4  whoami (list username)  Shows your username
     5  history (it will list all used commands in terminal)
-    6  vi hello.txt (create new file in liux in terminal)
-    7  ls
+    6  vi hello.txt (create new file in liux in terminal)  editing files (vi, nano)
+    7  ls  navigation (ls, pwd)
     8  history
     9  sudo apt-get install vim (inserting vim package in vi to upgrade vi)
-   10  nano (vi,nano using to insert new files)
-   11  nono hello1.txt
+   10  nano (vi,nano using to insert new files)  editing files (vi, nano)
+   11  nono hello1.txt  editing files (vi, nano)
    12  nano hello1.txt
    13  ls
    14  touch hello3.txt (touch use to create dummy file)
@@ -34,7 +34,7 @@ Linux 174.175.178.68.host.secureserver.net 5.4.0-165-generic #182-Ubuntu SMP Mon
    29  cat hello3.txt >> hello_new.txt (>> append)
    30  ls
    31 
-   32  cat hello3.txt >> new.txt
+   32  cat hello3.txt >> new.txt  appending (>>)
    33  ls
    34  new.txt
    35  cat new.txt
@@ -42,4 +42,4 @@ Linux 174.175.178.68.host.secureserver.net 5.4.0-165-generic #182-Ubuntu SMP Mon
    37  ls
    38  cat new.txt
    39  history  
-   40  history >> history.txt.*/
+   40  history >> history.txt   >> adds content at the end of a file,Creates the file if it doesn’t exist*/
