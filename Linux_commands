@@ -2,3 +2,44 @@ root@174:/var/www# pwd (present working directory)
 /var/www
 root@174:/var/www# uname -a  (os versoin)
 Linux 174.175.178.68.host.secureserver.net 5.4.0-165-generic #182-Ubuntu SMP Mon Oct 2 19:43:28 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+/.*    1  ls (list files)
+    2  pwd (to list present working directory)
+    3  uname -a ( to show username)
+    4  whoami (list username)
+    5  history (it will list all used commands in terminal)
+    6  vi hello.txt (create new file in liux in terminal)
+    7  ls
+    8  history
+    9  sudo apt-get install vim (inserting vim package in vi to upgrade vi)
+   10  nano (vi,nano using to insert new files)
+   11  nono hello1.txt
+   12  nano hello1.txt
+   13  ls
+   14  touch hello3.txt (touch use to create dummy file)
+   15  ls
+   16  rm hello3.txt (remove file)
+   17  ls
+   18  ls *.txt (list all files with .txt * means all)
+   19  rm *.txt (remove files)
+   20  ls
+   21  vi hello.txt
+   22  cat hello.txt
+   23  cp hello.txt hello_new.txt
+   24  ls
+   25  cat hello_new.txt (without opening file we can see inside information)
+   26  cat hello.txt
+   27  mv hello.txt hello3.txt (moving data from one file to another file)
+   28  ls
+   29  cat hello3.txt >> hello_new.txt (>> append)
+   30  ls
+   31 
+   32  cat hello3.txt >> new.txt
+   33  ls
+   34  new.txt
+   35  cat new.txt
+   36  echo "swarna" >> new.txt (print new data in text file)
+   37  ls
+   38  cat new.txt
+   39  history  
+   40  history >> history.txt.*/
