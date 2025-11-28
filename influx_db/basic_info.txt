@@ -85,3 +85,105 @@ from(bucket: "Solar")
   |> filter(fn: (r) => r.dlid == "44B7D09EA7CF")
   |> filter(fn: (r) => r.did == "HTmeter01")
   |> filter(fn: (r) => r.f == "Solar_Month_Energy")
+-----------------------------------------------------------------------------------------------------------------------
+Here is a clear and simple explanation of the basic concepts of InfluxDB — Buckets, Org, Token, and Retention Policy.
+These are the 4 things you must understand before connecting Grafana or writing data.
+
+✅ 1. What is an Organization (Org)?
+
+An Org in InfluxDB is like a company or workspace.
+
+It groups your Users
+
+It groups your Buckets
+
+It groups your Tokens
+
+You cannot write data without specifying the Org
+
+✔ Example:
+Org = Solar_Data_Team
+
+🌟 Think of Org = main folder of InfluxDB
+
+✅ 2. What is a Bucket?
+
+A Bucket is a database + retention policy together.
+
+🔹 Equivalent to a database table where your time-series data is stored.
+🔹 Every datapoint you write must have a bucket name.
+
+✔ Example:
+Bucket = Solar_Site_01
+
+Inside bucket → you store
+
+measurement
+
+tags (dlid, did, f)
+
+fields (value)
+
+timestamp
+
+🌟 Think of Bucket = database/storage space
+
+✅ 3. What is a Token?
+
+A Token is like an API key.
+
+It decides:
+
+Who can read data
+
+Who can write data
+
+Who can delete data
+
+Without token → InfluxDB will reject your write or query.
+
+Types:
+
+1️⃣ All Access Token → full permissions
+2️⃣ Read Token → only read
+3️⃣ Write Token → only write
+
+✔ Example use in write API:
+
+Authorization: Token MY_INFLUX_TOKEN_HERE
+
+
+🌟 Think of Token = password for InfluxDB API
+
+✅ 4. Retention Policy (RP)
+
+Retention Policy tells how long data will be kept inside the bucket.
+
+Examples:
+
+0 (infinite) → stores forever
+
+30d → keeps last 30 days
+
+365d → keeps 1-year data
+
+7d → keeps 7 days
+
+✔ Example:
+Retention = 30d
+
+If retention = 30d → older data is automatically deleted.
+
+🌟 Think of RP = auto-delete rule
+
+🎯 How They Work Together
+Concept	Meaning	Example
+Org	Workspace	Solar_Data_Team
+Bucket	Where data is stored	Solar_Site_01
+Token	API key for access	xxxxxxxx
+Retention	How long data stays	30d
+📌 Example of Writing Data to InfluxDB
+curl -X POST \
+  https://influx.example.com/api/v2/write?org=Solar_Data_Team&bucket=Solar_Site_01&precision=s \
+  -H "Authorization: Token MYTOKEN" \
+  --data-binary "wattmon_data,dlid=44B7D09EA7CF,did=HTMeter01 f='kWh_Day',value=12345 1711507200"
