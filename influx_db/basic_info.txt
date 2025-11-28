@@ -187,3 +187,18 @@ curl -X POST \
   https://influx.example.com/api/v2/write?org=Solar_Data_Team&bucket=Solar_Site_01&precision=s \
   -H "Authorization: Token MYTOKEN" \
   --data-binary "wattmon_data,dlid=44B7D09EA7CF,did=HTMeter01 f='kWh_Day',value=12345 1711507200"
+
+
+
+
+======================================================
+curl --request POST \
+"https://influxdb.renewgrid.in/api/v2/write?org=Fa_Infra&bucket=Fa_Infra&precision=s" \
+  --header "Authorization: Token 4kXdLHfRxiOjKgW**" \
+  --header "Content-Type: text/plain; charset=utf-8" \
+  --header "Accept: application/json" \
+  --data-binary '
+    wattmon_std_mv,dlid=74D5C6CF2CA9,did=Inverter01,f=Current_Actual_01 value=1 1756188300
+    wattmon_std_mv,dlid=74D5C6CF2CA9,did=Inverter01,f=Current_Actual_02 value=0 1756188300
+    wattmon_std_mv,dlid=74D5C6CF2CA9,did=Inverter01,f=Current_Actual_03 value=1 1756188300
+======================================================================================
