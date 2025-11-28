@@ -1,1 +1,87 @@
+InfluxDB is a time-series database — made specially to store data that changes over time (timestamps + values).
+✅ What is InfluxDB?
 
+InfluxDB is a database used to store:
+
+Sensor values
+
+Solar plant data (inverters, meters, irradiance, etc.)
+
+Energy, temperature, voltage, current
+
+Any data that comes with a timestamp
+
+Instead of normal SQL tables, InfluxDB uses:
+
+🔹 Bucket → like a database
+🔹 Measurement → like a table
+🔹 Fields → values (float, int, string)
+🔹 Tags → indexes (fast searching)
+🔹 Timestamp → time when data came
+
+
+✅ Example Data in InfluxDB
+
+Your CSV:
+
+timestamp,dlid,did,f,value
+1761868800,44B7D09EA7CF,HTmeter01,e-Cloud_Month_Import,175448
+
+
+Stored as:
+
+Measurement: wattmon_std_mv
+
+Tags: dlid=44B7D09EA7CF, did=HTmeter01, f=e-Cloud_Month_Import
+
+Field: value=175448
+
+Time: 1761868800 (epoch)
+
+
+🚀 How to View Data in InfluxDB (Visualization)
+⭐ Option 1 — Using InfluxDB UI (Explore)
+
+Open InfluxDB → Data Explorer
+
+Choose:
+
+Bucket
+
+Measurement
+
+Tags
+
+Field
+
+Click Submit
+
+You can see line charts, tables, bar charts inside InfluxDB itself.
+
+⭐ Option 2 — Use Grafana
+
+Grafana connects easily to InfluxDB:
+
+Add Data Source → InfluxDB
+
+Provide URL, Token, Bucket, Org
+
+Build dashboards with:
+
+Time-series chart
+
+Bar chart
+
+Gauge
+
+Stat panel
+⭐ Option 3 — Query Using Flux
+
+Example Flux query:
+
+from(bucket: "Solar")
+  |> range(start: -1d)
+  |> filter(fn: (r) => r._measurement == "wattmon_std_mv")
+  |> filter(fn: (r) => r.dlid == "44B7D09EA7CF")
+  |> filter(fn: (r) => r.did == "HTmeter01")
+  |> filter(fn: (r) => r.f == "Solar_Month_Energy")
