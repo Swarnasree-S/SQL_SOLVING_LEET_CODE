@@ -1,0 +1,40 @@
+✅ Perfect Answer (Question 1)
+Cron Question 1
+
+👉 What is cron and why do we use it in Linux?
+
+“Cron is a time-based scheduler in Linux used to automate tasks.
+We use cron to run scripts or commands automatically at specific times—like every minute, hour, day, month, or week—based on the cron time fields.”
+
+---------------------------------------------------------------------------------------------------
+2.What is the meaning of each field in a cron expression? Explain with an example.
+
+
+✔ Better Answer You Can Say in Interview
+
+“The cron expression */5 * * * * means this job runs every 5 minutes.
+The command uses /usr/bin/curl to call a PHP script on the server.
+Output is saved into /var/log/renewgrid/inacpower.log.
+The >> appends logs, and 2>&1 merges error logs with normal output.”
+
+  ----------------
+  1️⃣1️⃣ Why is my cron job not running? (Common reasons)
+
+✔ Wrong script path
+✔ Missing permissions (chmod +x script.sh)
+✔ Script runs manually but fails in cron because PATH is different
+✔ Missing environment variables
+✔ No newline at end of crontab
+✔ Using relative paths instead of absolute paths
+=======================================================
+User Cron vs System Cron
+Feature	User Cron	System Cron
+Definition	Cron jobs scheduled by individual users	Cron jobs scheduled at the system level
+Crontab Location	/var/spool/cron/crontabs/username	/etc/crontab and /etc/cron.* directories (cron.daily, cron.hourly, etc.)
+Privileges	Runs with the user’s permissions	Runs with system/root privileges
+Editing Command	crontab -e (as that user)	Edit /etc/crontab or files in /etc/cron.d/
+Use Case	Personal scripts, small tasks for that user	System maintenance, backups, package updates, monitoring tasks
+
+💡 Tip for interview:
+
+User cron is for individual users to schedule their own tasks; system cron is for administrative/system-level tasks that may affect multiple users or the whole system.
