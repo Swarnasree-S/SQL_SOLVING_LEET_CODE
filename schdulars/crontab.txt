@@ -294,3 +294,22 @@ command not found
 
 >> → append the output to the file (keep existing content)
 ----------------------------------------------------
+++++++++++++++++++++++++
+Great! Here’s a simple diagram to visualize how a URL points to your server:
+
+User Browser
+    |
+    |  Types URL: http://dev.renewgrid.in
+    v
+DNS Server
+    |  (A record points domain → server IP)
+    v
+Server IP: 68.178.175.174
+    |
+    |  Web server configuration (Apache/Nginx)
+    |  maps domain → folder/path
+    v
+Website files
+    |
+    v
+Browser displays the website++++++++++
