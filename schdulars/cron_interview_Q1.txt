@@ -1,3 +1,11 @@
+================
+How to check your system’s python path?
+
+Run:
+which python3
+Output may be:
+/usr/bin/python3
+=============================
 ✅ Perfect Answer (Question 1)
 Cron Question 1
 
