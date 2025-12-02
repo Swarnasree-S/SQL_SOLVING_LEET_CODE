@@ -1,0 +1,133 @@
+ChatGPT said:
+
+Here are the Top 20 Python interview questions with simple and clear answers — perfect for quick preparation:
+
+✅ Top 20 Python Interview Questions (with answers)
+1. What is Python?
+
+Python is a high-level, interpreted, object-oriented programming language used for automation, web apps, data science, ML, etc.
+
+2. What are Python’s key features?
+
+Easy to read
+
+Interpreted
+
+Dynamically typed
+
+Object-oriented
+
+Huge standard library
+
+Cross-platform
+
+3. What is PEP 8?
+
+PEP 8 is the style guide for writing clean Python code (naming, spacing, indentation rules).
+
+4. What is the difference between list and tuple?
+List	Tuple
+Mutable	Immutable
+[]	()
+Slower	Faster
+5. What is a dictionary in Python?
+
+A dictionary stores data in key–value pairs.
+Example: {"name": "John", "age": 25}.
+
+6. What is slicing?
+
+Extracting a portion of a list/string.
+Example:
+
+s = "swarna"
+print(s[1:4])  # war
+
+**7. What are *args and kwargs?
+
+*args → variable number of positional arguments
+
+**kwargs → variable number of keyword arguments
+
+Example:
+
+def fun(*args, **kwargs):
+    print(args, kwargs)
+
+8. What is a lambda function?
+
+A small anonymous function.
+
+x = lambda a: a * 2
+
+9. What is the difference between append() and extend()?
+
+append() → adds one element
+
+extend() → adds elements of an iterable
+
+10. What is OOP (Object-Oriented Programming)?
+
+A programming style using classes and objects.
+Main concepts: Encapsulation, Inheritance, Polymorphism, Abstraction
+
+11. What is init()?
+
+The constructor of a Python class.
+Executed automatically when creating an object.
+
+12. What is a module?
+
+A file containing Python code (.py).
+Example: import math.
+
+13. What is a package?
+
+A folder containing many Python modules and an __init__.py file.
+
+14. What are decorators?
+
+A function that modifies another function's behavior.
+
+@decorator
+def fun():
+    pass
+
+15. What is list comprehension?
+
+A short way to create lists:
+
+squares = [x*x for x in range(5)]
+
+16. What is a generator?
+
+A function that returns data using yield.
+Used for memory-efficient iteration.
+
+17. What is exception handling?
+
+Handling runtime errors using:
+
+try:
+    ...
+except:
+    ...
+finally:
+    ...
+
+18. What is the difference between =, ==, and === ?
+
+= assignment
+
+== value equality
+
+=== does not exist in Python
+
+19. How to open and read a file in Python?
+with open("file.txt", "r") as f:
+    data = f.read()
+
+20. What is the GIL (Global Interpreter Lock)?
+
+GIL allows only one thread to execute Python bytecode at a time.
+Affects multi-threaded CPU tasks.
