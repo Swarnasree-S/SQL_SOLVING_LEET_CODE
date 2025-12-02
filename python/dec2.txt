@@ -93,6 +93,49 @@ List	Tuple
 Mutable	Immutable
 []	()
 Slower	Faster
+
+(ChatGPT said:
+
+Mutable meaning (in simple words):
+
+Mutable = changeable.
+A mutable object means you can change its value after creation.
+
+✅ Examples in Python:
+
+Mutable objects:
+
+list
+
+dict
+
+set
+
+You can modify them:
+
+a = [1, 2, 3]
+a[0] = 10   # changed
+
+
+Immutable objects (not changeable):
+
+int
+
+float
+
+str
+
+tuple
+
+You cannot modify them:
+
+x = "hello"
+x[0] = 'H'   # ❌ Error — strings are immutable
+
+👍 One-line meaning:
+
+Mutable = can be modified.
+Immutable = cannot be modified.)
 5. What is a dictionary in Python?
 
 A dictionary stores data in key–value pairs.
@@ -111,6 +154,32 @@ print(s[1:4])  # war
 *args → variable number of positional arguments
 
 **kwargs → variable number of keyword arguments
+(*args → list/tuple of values
+
+**kwargs → dictionary of key-value pairs
+
+✅ Both together
+
+Your example:
+
+def fun(*args, **kwargs):
+    print(args, kwargs)
+
+
+Calling it:
+
+fun(10, 20, name="John", age=25)
+
+
+Output:
+
+(10, 20) {'name': 'John', 'age': 25}
+
+✔ Breakdown:
+
+10, 20 → go into args (tuple of positional arguments)
+
+name="John", age=25" → go into kwargs (dictionary of keyword arguments))
 
 Example:
 
@@ -121,13 +190,75 @@ def fun(*args, **kwargs):
 
 A small anonymous function.
 
-x = lambda a: a * 2
+x = lambda a: a * 2(A lambda function in Python is a small, anonymous (no name) function defined using the keyword lambda.
+
+✅ Definition
+
+A lambda function is a one-line function used for short, simple operations.
+
+✅ Syntax
+lambda arguments: expression
+
+📌 Example 1 — Simple addition
+add = lambda a, b: a + b
+print(add(3, 5))
+
+
+Output:
+
+8
+
+📌 Example 2 — Square of a number
+square = lambda x: x * x
+print(square(4))
+
+
+Output:
+
+16)
 
 9. What is the difference between append() and extend()?
 
 append() → adds one element
 
 extend() → adds elements of an iterable
+(Difference Between append() and extend() in Python
+Feature	append()	extend()
+Purpose	Adds one item to the end of the list	Adds multiple items to the list
+Input Type	Takes a single element (object)	Takes an iterable (list, tuple, string, etc.)
+How it behaves	Adds the item as it is	Iterates over the items and adds each element
+Modifies list?	Yes	Yes
+Example 1: append()
+a = [1, 2, 3]
+a.append([4, 5])
+print(a)
+
+
+Output:
+
+[1, 2, 3, [4, 5]]
+
+
+👉 The entire list [4,5] is added as one element.
+
+Example 2: extend()
+a = [1, 2, 3]
+a.extend([4, 5])
+print(a)
+
+
+Output:
+
+[1, 2, 3, 4, 5]
+
+
+👉 extend() unpacks the list and adds each element.
+
+In Simple Words
+
+append() → adds whole object as a single item
+
+extend() → adds each element of the object individually)
 
 10. What is OOP (Object-Oriented Programming)?
 
