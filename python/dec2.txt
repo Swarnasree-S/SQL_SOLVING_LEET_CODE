@@ -19,7 +19,52 @@ Object-oriented
 
 Huge standard library
 
-Cross-platform
+Cross-platform(ChatGPT said:
+
+Cross-platform means a software, program, or language that can run on multiple operating systems without needing big changes.
+
+✔ Simple Meaning
+
+If something is cross-platform, it works on:
+
+Windows
+
+Linux
+
+macOS
+(or even mobile platforms like Android/iOS)
+
+✔ Example
+
+Python is cross-platform →
+The same Python code can run on Windows, Linux, and Mac with very small or no changes.
+
+Example code:
+
+print("Hello World")
+
+
+This runs on all OS without modification.
+
+✔ Real-life Examples
+Software	Cross-platform?	Runs On
+Python	✔ Yes	Windows, Linux, Mac
+Java	✔ Yes	Windows, Linux, Mac
+Google Chrome	✔ Yes	Windows, Linux, Mac, Android, iOS
+Notepad.exe	✖ No	Only Windows
+✔ Why is cross-platform important (Interview answer)
+
+Portability – code runs everywhere
+
+Cost saving – no need to rewrite for every OS
+
+More users – supports many environments
+
+Easy maintenance – one codebase
+
+✔ Short Interview Answer
+
+"Cross-platform means the ability of software to run on multiple operating systems like Windows, Linux, and macOS without modifications.")
 
 3. What is PEP 8?
 
