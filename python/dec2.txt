@@ -11,7 +11,25 @@ Python is a high-level, interpreted, object-oriented programming language used f
 
 Easy to read
 
-Interpreted
+Interpreted (Interpreted means → The code is not compiled into machine code beforehand.
+Instead, the Python interpreter reads and executes the code line-by-line.
+
+Simple Explanation
+
+Compiled language (C, C++, Java):
+Code → Compiler → Machine code → Runs
+
+Interpreted language (Python, JavaScript):
+Code → Interpreter executes line by line → Runs
+
+What it really means:
+
+✔ No need to compile
+✔ Easy to test and run immediately
+✔ Slower than compiled languages because it executes line-by-line
+✔ More flexible (dynamic typing, easy debugging) One-line answer for interview:
+
+"Interpreted means the code is executed line-by-line by an interpreter instead of being compiled into machine code beforehand.")
 
 Dynamically typed
 
@@ -176,3 +194,12 @@ with open("file.txt", "r") as f:
 
 GIL allows only one thread to execute Python bytecode at a time.
 Affects multi-threaded CPU tasks.
+
+
+("In compiled languages, the entire code is converted into machine code first, and then we run it.
+In interpreted languages, the code is run line-by-line by the interpreter without a separate compilation step."
+
+Want the exact one-line interview answer?
+
+"Compiler → converts whole program to machine code before execution.
+Interpreter → executes code directly line-by-line without pre-compilation.")
