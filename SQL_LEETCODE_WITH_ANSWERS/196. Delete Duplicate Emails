@@ -1,1 +1,25 @@
+query:
+----------
+delete p
+from person p
+join person e
+on p.email=e.email
+and p.id>e.id
 
+
+
+Input: 
+Person table:
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+| 3  | john@example.com |
++----+------------------+
+Output: 
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
