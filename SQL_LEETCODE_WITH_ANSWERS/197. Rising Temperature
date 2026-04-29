@@ -1,0 +1,28 @@
+# Write your MySQL query statement below
+select d1.id
+from
+weather d1
+join weather d2
+on datediff(d1.recorddate,d2.recorddate)=1
+where d1.temperature>d2.temperature
+
+
+
+Input: 
+Weather table:
++----+------------+-------------+
+| id | recordDate | temperature |
++----+------------+-------------+
+| 1  | 2015-01-01 | 10          |
+| 2  | 2015-01-02 | 25          |
+| 3  | 2015-01-03 | 20          |
+| 4  | 2015-01-04 | 30          |
++----+------------+-------------+
+Output: 
++----+
+| id |
++----+
+| 2  |
+| 4  |
+
+
