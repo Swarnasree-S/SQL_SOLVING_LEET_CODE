@@ -1,1 +1,32 @@
 
+Query1:
+----------
+select distinct num as consecutivenums
+from (  
+    select
+        num,
+        lag(num,1) over (order by id desc) as prev1,
+        lag(num,2) over (order by id desc) as prev2
+    from logs
+    )t
+    where num=prev1 and num=prev2
+
+Input: 
+Logs table:
++----+-----+
+| id | num |
++----+-----+
+| 1  | 1   |
+| 2  | 1   |
+| 3  | 1   |
+| 4  | 2   |
+| 5  | 1   |
+| 6  | 2   |
+| 7  | 2   |
++----+-----+
+Output: 
++-----------------+
+| ConsecutiveNums |
++-----------------+
+| 1               |
++-----------------+
