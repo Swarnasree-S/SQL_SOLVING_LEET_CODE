@@ -25,6 +25,9 @@ Condition Type	Use
 Table matching	- ON
 Row filtering	- WHERE
 
+/*ON e.departmentid = t.departmentid
+AND e.salary = t.salary*/
+
 
 Example 1:
 
