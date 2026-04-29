@@ -17,6 +17,15 @@ join department d
 on e.departmentid=d.id
 
 
+notes:
+---------
+Best Practice
+Condition Type	Use
+------------------
+Table matching	- ON
+Row filtering	- WHERE
+
+
 Example 1:
 
 Input: 
