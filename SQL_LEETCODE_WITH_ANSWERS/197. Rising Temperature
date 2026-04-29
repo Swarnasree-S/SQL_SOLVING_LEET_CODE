@@ -1,10 +1,11 @@
 # Write your MySQL query statement below
-select d1.id
+select w1.id
 from
-weather d1
-join weather d2
-on datediff(d1.recorddate,d2.recorddate)=1
-where d1.temperature>d2.temperature
+weather w1
+join
+weather w2
+on datediff(w1.recorddate,w2.recorddate)=1
+and w1.temperature>w2.temperature
 
 
 
