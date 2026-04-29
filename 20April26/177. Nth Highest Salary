@@ -1,1 +1,22 @@
+// to check stored proceduer in kusum database
+SHOW PROCEDURE STATUS WHERE Db = 'kusum';
 
+/*my lead wring cal using php scripts i think so only she didnt use stored procedures
+
+Your lead is probably handling the business logic using:
+
+PHP scripts
+application code
+APIs
+
+instead of stored procedures.
+
+That’s why your database may not contain procedures.  */
+
+
+Yes, that is very common.
+Two Common Approaches
+---------------------
+Approach	Logic Stored In
+Stored Procedure Approach-	Database
+Application Approach-	PHP/Python/Java code
