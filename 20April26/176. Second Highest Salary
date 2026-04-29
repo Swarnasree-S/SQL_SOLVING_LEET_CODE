@@ -18,7 +18,10 @@ Write a solution to find the second highest distinct salary from the Employee ta
 The result format is in the following example.
 
 Query:1 (subquery method)
+
+------------------------------------------------------------------------------------------------------
 select max(salary) as secondhighestsalary from employee where salary<(select max(salary) from employee)
+-------------------------------------------------------------------------------------------------------
 
 Why It Is Called a Subquery
 
