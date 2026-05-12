@@ -1,1 +1,22 @@
+CTE =
 
+"Create temporary filtered/calculated view and use it immediately"
+
+
+A CTE is like creating a temporary named result set and then querying from it.
+
+Ex:
+WITH temp_table AS (
+    SELECT *
+    FROM employees
+    WHERE salary > 50000
+)
+
+SELECT *
+FROM temp_table
+WHERE department = 'IT';
+
+Flow:
+
+First query creates a temporary result (temp_table)
+Second query uses that result
