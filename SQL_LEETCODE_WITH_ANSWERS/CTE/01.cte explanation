@@ -5,6 +5,11 @@ CTE =
 
 A CTE is like creating a temporary named result set and then querying from it.
 
+/* CTE is:
+Temporary
+Exists only during query execution
+Not physically stored in database */
+
 Ex:
 WITH temp_table AS (
     SELECT *
