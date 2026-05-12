@@ -4,6 +4,7 @@ CTE =
 
 
 A CTE is like creating a temporary named result set and then querying from it.
+"CTEs help break complex SQL into readable logical steps."
 
 /* CTE is:
 Temporary
