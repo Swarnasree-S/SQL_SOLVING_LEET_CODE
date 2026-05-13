@@ -28,3 +28,229 @@ It helps you understand:
 4.labels
 5.values
 6.metadata  */
+
+
+JavaScript Console Debugging Notes for Grafana ECharts
+=====================================================
+
+1. console.log()
+----------------
+Used to print data normally.
+
+Example:
+console.log(data);
+
+Use Cases:
+- Check query response
+- View variables
+- Debug values
+
+
+2. console.table()
+------------------
+Displays arrays/objects in table format.
+
+Example:
+console.table(data.series[0].fields);
+
+Best For:
+- Field mapping
+- Inverter data
+- Comparing rows
+
+
+3. console.error()
+------------------
+Displays error message in red.
+
+Example:
+console.error("Field missing");
+
+Best For:
+- Missing fields
+- Query failures
+- Validation errors
+
+
+4. console.warn()
+-----------------
+Displays warning in yellow.
+
+Example:
+console.warn("No inverter data");
+
+Best For:
+- Empty data
+- Partial data
+- Optional warnings
+
+
+5. console.info()
+-----------------
+Displays informational message.
+
+Example:
+console.info("Chart loaded");
+
+Best For:
+- Status messages
+- Execution checkpoints
+
+
+6. console.dir()
+----------------
+Shows object structure deeply.
+
+Example:
+console.dir(data);
+
+Best For:
+- Nested objects
+- Labels inspection
+- Detailed debugging
+
+
+7. console.count()
+------------------
+Counts how many times code runs.
+
+Example:
+console.count("Loop");
+
+Output:
+Loop: 1
+Loop: 2
+
+Best For:
+- Loop debugging
+- Re-render checks
+
+
+8. console.time() and console.timeEnd()
+---------------------------------------
+Measures execution speed.
+
+Example:
+console.time("process");
+
+fields.forEach(f => {
+  // logic
+});
+
+console.timeEnd("process");
+
+Output:
+process: 2.1ms
+
+Best For:
+- Performance testing
+- Optimization
+
+
+9. console.group()
+------------------
+Groups logs together.
+
+Example:
+console.group("Inverter");
+
+console.log("Voltage");
+console.log("Current");
+
+console.groupEnd();
+
+Best For:
+- Organizing logs
+- Complex debugging
+
+
+10. console.clear()
+-------------------
+Clears browser console.
+
+Example:
+console.clear();
+
+Best For:
+- Fresh debugging session
+
+
+11. console.assert()
+--------------------
+Shows error only if condition fails.
+
+Example:
+console.assert(fields.length > 0, "No fields found");
+
+Best For:
+- Data validation
+- Safety checks
+
+
+Most Common Grafana Debugging
+=============================
+
+View Full Data:
+console.log(data);
+
+View Fields:
+console.table(data.series[0].fields);
+
+View Labels:
+fields.forEach(field => {
+  console.log(field.labels);
+});
+
+View Values:
+fields.forEach(field => {
+  console.log(field.values.get(0));
+});
+
+
+Browser Console Access
+======================
+
+Windows/Linux:
+F12
+
+Mac:
+Cmd + Option + I
+
+Then open:
+Console Tab
+
+
+Useful ECharts Debug Example
+============================
+
+if (!data || !data.series || !data.series[0]?.fields) {
+  console.error("No data found");
+  return { series: [] };
+}
+
+const fields = data.series[0].fields;
+
+console.table(
+  fields.map(f => ({
+    name: f.name,
+    did: f.labels?.did,
+    string: f.labels?.f,
+    value: f.values.get(0)
+  }))
+);
+
+
+Quick Summary
+=============
+
+console.log()       -> Normal print
+console.table()     -> Table display
+console.error()     -> Error message
+console.warn()      -> Warning message
+console.info()      -> Information
+console.dir()       -> Deep object view
+console.count()     -> Count executions
+console.time()      -> Measure speed
+console.group()     -> Group logs
+console.clear()     -> Clear console
+console.assert()    -> Validate conditions
