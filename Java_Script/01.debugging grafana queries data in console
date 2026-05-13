@@ -1,1 +1,19 @@
 
+In grafana panel:
+1.Open Grafana dashboard
+2.Press F12
+3.Go to Console
+/* output:Where output appears In browser console */
+
+Step 1:
+      console.log(data);
+      Understand full structure.
+Step 2:
+     console.log(data.series);
+     Check series.
+Step 3:
+      console.log(data.series[0].fields);
+      Inspect fields.
+Step 4:
+      console.log(data.series[0].fields[0]);
+      Inspect one field deeply.
