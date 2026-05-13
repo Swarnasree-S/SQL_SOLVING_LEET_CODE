@@ -17,3 +17,14 @@ Step 3:
 Step 4:
       console.log(data.series[0].fields[0]);
       Inspect one field deeply.
+/*
+Why it is useful
+
+It helps you understand:
+
+1.what Grafana is sending
+2.series structure
+3.fields available
+4.labels
+5.values
+6.metadata  */
