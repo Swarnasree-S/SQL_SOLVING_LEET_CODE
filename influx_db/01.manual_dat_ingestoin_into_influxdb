@@ -1,1 +1,10 @@
- 1998  curl --request POST "https://influxdb.renewgrid.in/api/v2/write?org=Ramtaranga&bucket=Ramtaranga&precision=s" --header "Authorization: Token loXQMisGXy_jkkRjxyRci_R4LMgMH-dwIbpkrgtwSJzoicjgdwHCXT99AHlQoh4pFqHrQNoC-h-cHvGKQNK-Jw==" --header "Content-Type: text/plain; charset=utf-8" --header "Accept: application/json" --data-binary "wattmon_std_mv,dlid=2CFE8B10D345,did=HTmeter01,f=kWh_Total_Import value=110764 1779128940"
+curl --request POST \
+"https://influxdb.renewgrid.in/api/v2/write?org=Ramtaranga&bucket=Ramtaranga&precision=s" \
+--header "Authorization: Token loXQMisGXy_jkkRjxyRci_R4LMgMH-dwIbpkrgtwSJzoicjgdwHCXT99AHlQoh4pFqHrQNoC-h-cHvGKQNK-Jw==" \
+--header "Content-Type: text/plain; charset=utf-8" \
+--header "Accept: application/json" --data-binary "wattmon_std_mv,dlid=2CFE8B10D345,did=HTmeter01,f=kWh_Total_Import value=110764 1779128940" 
+
+or
+
+
+curl --request POST "https://influxdb.renewgrid.in/api/v2/write?org=Ramtaranga&bucket=Ramtaranga&precision=s" --header "Authorization: Token loXQMisGXy_jkkRjxyRci_R4LMgMH-dwIbpkrgtwSJzoicjgdwHCXT99AHlQoh4pFqHrQNoC-h-cHvGKQNK-Jw==" --header "Content-Type: text/plain; charset=utf-8" --header "Accept: application/json" --data-binary "wattmon_std_mv,dlid=2CFE8B10D345,did=HTmeter01,f=kWh_Total_Import value=110764 1779128940"
