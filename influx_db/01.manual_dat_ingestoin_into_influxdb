@@ -1,3 +1,18 @@
+# Manual InfluxDB Data Ingestion Using curl
+
+This document explains how to manually insert data into InfluxDB 2.x using `curl` and Line Protocol.
+
+# Prerequisites
+
+- InfluxDB 2.x server access
+- Valid API Token
+- Organization name
+- Bucket name
+- Linux server with `curl`
+
+# Multi-Line curl Command
+
+
 curl --request POST \
 "https://influxdb.renewgrid.in/api/v2/write?org=Ramtaranga&bucket=Ramtaranga&precision=s" \
 --header "Authorization: Token loXQMisGXy_jkkRjxyRci_R4LMgMH-dwIbpkrgtwSJzoicjgdwHCXT99AHlQoh4pFqHrQNoC-h-cHvGKQNK-Jw==" \
@@ -6,5 +21,146 @@ curl --request POST \
 
 or
 
-
+# Single-Line curl Command
 curl --request POST "https://influxdb.renewgrid.in/api/v2/write?org=Ramtaranga&bucket=Ramtaranga&precision=s" --header "Authorization: Token loXQMisGXy_jkkRjxyRci_R4LMgMH-dwIbpkrgtwSJzoicjgdwHCXT99AHlQoh4pFqHrQNoC-h-cHvGKQNK-Jw==" --header "Content-Type: text/plain; charset=utf-8" --header "Accept: application/json" --data-binary "wattmon_std_mv,dlid=2CFE8B10D345,did=HTmeter01,f=kWh_Total_Import value=110764 1779128940"
+
+
+# Command Explanation
+
+## API Endpoint
+
+```text
+/api/v2/write
+```
+
+Used to write data into InfluxDB.
+
+
+# Query Parameters
+
+| Parameter | Description |
+|---|---|
+| org | InfluxDB organization |
+| bucket | Target bucket/database |
+| precision=s | Timestamp precision in seconds |
+
+# Authorization Header
+
+```bash
+--header "Authorization: Token YOUR_TOKEN"
+```
+
+Used for authentication.
+
+# Line Protocol Format
+
+```text
+measurement,tags fields timestamp
+
+Example:
+
+```text
+wattmon_std_mv,dlid=2CFE8B10D345,did=HTmeter01,f=kWh_Total_Import value=110764 1779128940
+
+
+# Data Breakdown
+
+| Part | Meaning |
+|---|---|
+| wattmon_std_mv | Measurement |
+| dlid | Logger ID tag |
+| did | Device ID tag |
+| f | Field identifier tag |
+| value | Actual metric value |
+| timestamp | Unix timestamp |
+
+---
+
+# Current Timestamp Example
+
+Use current Unix timestamp dynamically:
+
+```bash
+$(date +%s)
+```
+
+Example:
+
+```bash
+curl --request POST \
+"https://influxdb.renewgrid.in/api/v2/write?org=Ramtaranga&bucket=Ramtaranga&precision=s" \
+--header "Authorization: Token YOUR_TOKEN" \
+--header "Content-Type: text/plain; charset=utf-8" \
+--data-binary "wattmon_std_mv,dlid=2CFE8B10D345,did=HTmeter01,f=kWh_Total_Import value=110764 $(date +%s)"
+```
+
+---
+
+# Successful Response
+
+If data ingestion is successful:
+
+```text
+HTTP/2 204
+```
+
+or no output.
+
+---
+
+# Common Errors
+
+| Error | Cause |
+|---|---|
+| unauthorized access | Invalid token |
+| bad request | Invalid line protocol |
+| bucket not found | Wrong bucket name |
+| connection refused | Server unreachable |
+
+---
+
+# Verify Using curl Response Headers
+
+```bash
+curl -i --request POST ...
+```
+
+---
+
+# Security Note
+
+Do not expose InfluxDB tokens publicly.
+
+Recommended:
+- Store token in environment variable
+- Rotate tokens periodically
+
+Example:
+
+```bash
+export INFLUX_TOKEN="YOUR_TOKEN"
+```
+
+Then:
+
+```bash
+--header "Authorization: Token $INFLUX_TOKEN"
+```
+
+---
+
+# Recommended Optimized Line Protocol
+
+Instead of:
+
+```text
+wattmon_std_mv,dlid=2CFE8B10D345,did=HTmeter01,f=kWh_Total_Import value=110764
+```
+
+Prefer:
+
+```text
+wattmon_std_mv,dlid=2CFE8B10D345,did=HTmeter01 kWh_Total_Import=110764i
+```
+
+This improves InfluxDB performance and reduces tag cardinality.
