@@ -1,0 +1,57 @@
+does indexs have internal structure of table
+
+Yes. Indexes are part of the table's internal structure, but they are separate from the actual data rows.
+
+Think of a table like a book:
+
+Table data = the pages of the book.
+Index = the index section at the back of the book that helps you find information quickly.
+Example
+
+Table:
+
+sl_no	logger_id
+1	A123
+2	B456
+3	C789
+
+Without an index, MySQL may check rows one by one.
+
+With an index on logger_id, MySQL keeps an internal BTREE structure like:
+
+A123 → Row 1
+B456 → Row 2
+C789 → Row 3
+
+so searches are much faster.
+
+Where indexes are stored
+
+From your table status:
+
+Data_length  = 49152
+Index_length = 16384
+
+This means:
+
+Table data uses about 48 KB
+Indexes use about 16 KB
+
+So MySQL stores index structures separately from the row data.
+
+How to see indexes
+SHOW INDEX FROM file_router;
+How to see the complete table structure
+SHOW CREATE TABLE file_router;
+
+This shows:
+
+Columns
+Data types
+Primary keys
+Unique keys
+Indexes
+Constraints
+Interview answer
+
+An index is an internal data structure maintained by the database (usually a BTREE) that helps MySQL locate rows quickly. It is part of the table definition but is stored separately from the actual row data.
