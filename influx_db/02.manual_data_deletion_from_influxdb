@@ -3,3 +3,59 @@ curl --request POST "https://influxdb.renewgrid.in/api/v2/delete?org=Ramtaranga&
     "stop": "2026-06-01T00:00:00Z",
 	"predicate": "_measurement=\"wattmon_std_mv\" AND dlid=\"9C956E78E37A\""
   }'
+
+
+# InfluxDB Data Deletion
+
+## Purpose
+
+This command deletes data from the InfluxDB bucket based on a specified time range and filter criteria.
+
+## Delete Command
+
+```bash
+curl --request POST "https://influxdb.renewgrid.in/api/v2/delete?org=Ramtaranga&bucket=Ramtaranga" \
+  --header "Authorization: Token <TOKEN>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "start": "2024-02-01T00:00:00Z",
+    "stop": "2026-06-01T00:00:00Z",
+    "predicate": "_measurement=\"wattmon_std_mv\" AND dlid=\"9C956E78E37A\""
+  }'
+```
+
+## Parameters
+
+| Parameter | Description                                            |
+| --------- | ------------------------------------------------------ |
+| org       | InfluxDB organization name                             |
+| bucket    | Bucket from which data will be deleted                 |
+| start     | Start time of the deletion range (UTC)                 |
+| stop      | End time of the deletion range (UTC)                   |
+| predicate | Filter condition used to identify records for deletion |
+
+## Example
+
+The above command deletes all records that satisfy:
+
+* Measurement: `wattmon_std_mv`
+* DLID: `9C956E78E37A`
+* Timestamp between `2024-02-01T00:00:00Z` and `2026-06-01T00:00:00Z`
+
+## Verification Query
+
+Before deleting data, verify the affected records:
+
+```flux
+from(bucket: "Ramtaranga")
+  |> range(start: 2024-02-01T00:00:00Z, stop: 2026-06-01T00:00:00Z)
+  |> filter(fn: (r) => r._measurement == "wattmon_std_mv")
+  |> filter(fn: (r) => r.dlid == "9C956E78E37A")
+```
+
+## Notes
+
+* Data deletion is permanent.
+* Ensure a backup is available before running the delete operation.
+* A successful request typically returns HTTP status `204 No Content`.
+* Deleted data may take a short time to disappear from query results.
